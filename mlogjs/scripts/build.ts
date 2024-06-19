@@ -39,16 +39,7 @@ const changeExtension = (filePath: string, newExtension: string) => {
 	return path.join(path.dirname(filePath), basename + newExtension)
 }
 
-await execPromise(cleanCommand)
-
-const compiler = new Compiler({ compactNames: true })
-
-const files = await fs.readdir(inputPath, { recursive: true })
-
-for (const file of files) {
-	// Only parse ts and js files
-	if (!['.js', '.ts'].includes(path.extname(file))) continue
-
+const processFile = async (file: string) => {
 	console.log(`Processing ${file}`)
 
 	const filePath = path.join(inputPath, file)
@@ -59,7 +50,7 @@ for (const file of files) {
 
 	const stat = await fs.stat(filePath)
 
-	if (!stat.isFile()) continue
+	if (!stat.isFile()) return
 
 	const contentBuffer = await fs.readFile(filePath)
 	const content = contentBuffer.toString()
@@ -68,7 +59,7 @@ for (const file of files) {
 	if (content.match(/^\/\/\s*@mlog-skip/)) {
 		console.log(`Skipped mlog compiling for ${file}`)
 
-		continue
+		return
 	}
 
 	const bundle = await rollup({
@@ -108,11 +99,28 @@ for (const file of files) {
 
 	const [compiled, error] = compiler.compile(outputChunk.code)
 
-	if (error !== null) {
-		console.error(`Error occured while compiling ${filePath}.`, error)
-
-		continue
-	}
+	if (error !== null) throw error
 
 	await fs.writeFile(toPath, compiled)
 }
+
+await execPromise(cleanCommand)
+
+const compiler = new Compiler({ compactNames: true })
+
+const files = await fs.readdir(inputPath, { recursive: true })
+
+const promises: Promise<void>[] = []
+
+for (const file of files) {
+	// Only parse ts and js files
+	if (!['.js', '.ts'].includes(path.extname(file))) continue
+
+	const promise = processFile(file).catch(error => {
+		console.error(`Error occured while compiling ${file}`, error)
+	})
+
+	promises.push(promise)
+}
+
+await Promise.all(promises)
