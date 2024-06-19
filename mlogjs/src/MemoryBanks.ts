@@ -11,6 +11,8 @@
  * 3: Fetch Signal (Fetch selected data to DataIOCell)
  * 4: Set Signal (Set selected data from DataIOCell)
  * 5: Clear Signal (Clear selected data)
+ *
+ * 63: Total addresses (Read only)
  */
 
 const controlCellBuilding = getLink(0)
@@ -19,14 +21,16 @@ const controlCell = new Memory(controlCellBuilding, 64)
 const dataIOCellBuilding = getLink(1)
 const dataIOCell = new Memory(dataIOCellBuilding, 512)
 
-let totalAddress = 0
+let totalAddresses = 0
 
 for (let i = 0; i < Vars.links - 2; i++) {
 	const memoryBankBuilding = getLink(i)
 	const memoryBank = new Memory(memoryBankBuilding, 512)
 
-	totalAddress += memoryBank.length
+	totalAddresses += memoryBank.length
 }
+
+controlCell[63] = totalAddresses
 
 const getAtAddress = (address: number): number => {
 	const bankIndex = Math.floor(address / 512)
@@ -58,7 +62,7 @@ mainLoop: while (true) {
 
 	if (limit! >= 512) continue mainLoop
 	if (offset! < 0) continue mainLoop
-	if (limit! + offset! >= totalAddress) continue mainLoop
+	if (limit! + offset! >= totalAddresses) continue mainLoop
 
 	if (fetchSignal === 1) {
 		for (let i = 0; i < limit!; i++) {
