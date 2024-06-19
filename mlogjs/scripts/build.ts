@@ -5,18 +5,35 @@ import fs from 'fs/promises'
 import { OutputChunk, rollup } from 'rollup'
 import typescript from '@rollup/plugin-typescript'
 
-const inputDir = process.argv[2]
-const outputDir = process.argv[3]
+import { program } from 'commander'
 
-const generatePreCompile = false
-const compactNames = false
+interface IBuildProgramOptions {
+	outDir: string
+	generatePreCompile: boolean
+	compactNames: boolean
+}
+
+program
+	.name('mindustry-personal-computer-mlogjs-compiler')
+	.description('Better MlogJS build tools. Has import/export support.')
+	.version('1.0.0')
+	.argument('<input-directory>', 'Input directory')
+	.option('-o, --out-dir', 'Output directory for mlog and other generated files.', './dist/')
+	.option('-p, --generate-pre-compile', 'Whether to output pre-mlog compiled js code.', false)
+	.option(
+		'-n, --compact-names',
+		'Whether to compact variables name in compiled mlog output',
+		false,
+	)
+	.parse()
+
+const options = program.opts<IBuildProgramOptions>()
+
+const inputDir = program.args[0]
 
 if (inputDir === undefined) throw new Error('No inputDir')
 
-if (outputDir === undefined) throw new Error('No outputDir')
-
-const inputPath = path.resolve(process.cwd(), inputDir)
-const outputPath = path.resolve(process.cwd(), outputDir)
+if (options.outDir === undefined) throw new Error('No outputDir')
 
 const cleanCommand = 'npm run clean'
 
@@ -43,9 +60,9 @@ const changeExtension = (filePath: string, newExtension: string) => {
 const processFile = async (file: string) => {
 	console.log(`Processing ${file}`)
 
-	const filePath = path.join(inputPath, file)
-	const toPath = path.join(outputPath, changeExtension(file, '.mlog'))
-	const preCompileToPath = path.join(outputPath, changeExtension(file, '.pre.js'))
+	const filePath = path.join(inputDir, file)
+	const toPath = path.join(options.outDir, changeExtension(file, '.mlog'))
+	const preCompileToPath = path.join(options.outDir, changeExtension(file, '.pre.js'))
 
 	await fs.mkdir(path.dirname(toPath), { recursive: true })
 
@@ -90,7 +107,7 @@ const processFile = async (file: string) => {
 
 	if (outputChunk === null) throw new Error('No output chunk')
 
-	if (generatePreCompile) await fs.writeFile(preCompileToPath, outputChunk.code)
+	if (options.generatePreCompile) await fs.writeFile(preCompileToPath, outputChunk.code)
 
 	if (outputChunk.exports.length > 0) {
 		throw new Error(
@@ -107,9 +124,9 @@ const processFile = async (file: string) => {
 
 await execPromise(cleanCommand)
 
-const compiler = new Compiler({ compactNames })
+const compiler = new Compiler({ compactNames: options.compactNames })
 
-const files = await fs.readdir(inputPath, { recursive: true })
+const files = await fs.readdir(inputDir, { recursive: true })
 
 const promises: Promise<void>[] = []
 
