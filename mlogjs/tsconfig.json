@@ -33,10 +33,10 @@
 		"noEmit": false,
 		"baseUrl": "src",
 		"removeComments": true,
-		"sourceMap": true,
-		"declaration": true,
+		"sourceMap": false,
+		"declaration": false,
 		"types": ["mlogjs/lib"]
 	},
-	"references": [{ "path": "./scripts.tsconfig.json" }],
+	"references": [{ "path": "./dev.tsconfig.json" }],
 	"include": ["./src/**/*"]
 }

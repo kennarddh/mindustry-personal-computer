@@ -1,2 +1,5 @@
-draw.clear(1, 1, 1)
-print('aaaaa')
+import { x, func } from './a'
+
+draw.clear(x.x + 1, x.x + 1, x.x + 1)
+
+func()
