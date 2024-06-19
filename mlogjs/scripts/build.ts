@@ -8,7 +8,8 @@ import typescript from '@rollup/plugin-typescript'
 const inputDir = process.argv[2]
 const outputDir = process.argv[3]
 
-const generatePreCompile = true
+const generatePreCompile = false
+const compactNames = false
 
 if (inputDir === undefined) throw new Error('No inputDir')
 
@@ -106,7 +107,7 @@ const processFile = async (file: string) => {
 
 await execPromise(cleanCommand)
 
-const compiler = new Compiler({ compactNames: true })
+const compiler = new Compiler({ compactNames })
 
 const files = await fs.readdir(inputPath, { recursive: true })
 
