@@ -1,7 +1,5 @@
 # CPU Architecture
 
--   Everything is in `64bit float` or also called `double`. `53 bit int` int max.
-
 ## L1 Cache
 
 -   512 Address
