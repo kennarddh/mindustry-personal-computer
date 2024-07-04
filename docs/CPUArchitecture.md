@@ -129,7 +129,9 @@
 
 ## TODO
 
--   [ ] IO instructions
+-   [ ] IO Instructions
 -   [ ] Pipelining
 -   [ ] Interrupt Prioritization
 -   [ ] Interrupt Masking
+-   [ ] CPUID instructions
+-   [ ] CMOVCC instruction?

@@ -33,7 +33,7 @@ for (let i = 0; i < Vars.links - 2; i++) {
 controlCell[63] = totalAddresses
 
 const getAtAddress = (address: number): number => {
-	const bankIndex = Math.floor(address / 512)
+	const bankIndex = Math.idiv(address, 512)
 	const inBankIndex = address - bankIndex * 512
 
 	const memoryBankBuilding = getLink(bankIndex + 2)
@@ -43,7 +43,7 @@ const getAtAddress = (address: number): number => {
 }
 
 const setAtAddress = (address: number, data: number) => {
-	const bankIndex = Math.floor(address / 512)
+	const bankIndex = Math.idiv(address, 512)
 	const inBankIndex = address - bankIndex * 512
 
 	const memoryBankBuilding = getLink(bankIndex + 2)

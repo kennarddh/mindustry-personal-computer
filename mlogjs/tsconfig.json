@@ -24,7 +24,6 @@
 		"noImplicitOverride": true /* Ensure overriding members in derived classes are marked with an override modifier. */,
 		"allowUnusedLabels": true /* Disable error reporting for unused labels. */,
 		"allowUnreachableCode": true /* Disable error reporting for unreachable code. */,
-		"lib": ["ESNext", "DOM"],
 		"skipLibCheck": true,
 		"allowSyntheticDefaultImports": true,
 		"module": "ESNext",
@@ -35,7 +34,16 @@
 		"removeComments": true,
 		"sourceMap": false,
 		"declaration": false,
-		"types": ["mlogjs/lib"]
+		"noLib": true,
+		"types": [
+			"mlogjs/lib",
+			"mlogjs/lib/eslib/lib.es5",
+			"mlogjs/lib/eslib/lib.es2015.collection",
+			"mlogjs/lib/eslib/lib.es2015.core",
+			"mlogjs/lib/eslib/lib.es2015.generator",
+			"mlogjs/lib/eslib/lib.es2015.iterable",
+			"mlogjs/lib/eslib/lib.es2015",
+		]
 	},
 	"references": [{ "path": "./dev.tsconfig.json" }],
 	"include": ["./src/**/*"]
