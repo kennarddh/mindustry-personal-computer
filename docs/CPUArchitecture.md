@@ -51,7 +51,7 @@
 ## Instruction Set
 
 | Opcode | Type       | Abbreviation | Parameters                                | Description                                                                                             |
-| ------ | ---------- | ------------ | ----------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------ |
+| ------ | ---------- | ------------ | ----------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | 0      | Math       | ADD          | [Destination:Register] [Source:Register]  | Performs addition. Destination = Destination + Source                                                   |
 | 1      | Math       | SUB          | [Destination:Register] [Source:Register]  | Performs subtraction. Destination = Destination - Source                                                |
 | 2      | Math       | MUL          | [Destination:Register] [Source:Register]  | Performs multiplication. Destination = Destination \* Source                                            |
@@ -79,7 +79,7 @@
 | 24     | Math       | DEC          | [Destination:Register]                    | Decrement by 1. Destination = Destination - 1                                                           |
 | 25     | Math       | CMP          | [Value1:Register] [Value2:Register]       | Performs `Value2` - `Value1`, set `SF`, `ZF`, `PF` flags and discard the result                         |
 | 26     | Bitwise    | AND          | [Destination:Register] [Source:Register]  | Performs bitwise `AND`. Destination = Destination & Source                                              |
-| 27     | Bitwise    | OR           | [Destination:Register] [Source:Register]  | Performs bitwise `OR`. Destination = Destination                                                        | Source |
+| 27     | Bitwise    | OR           | [Destination:Register] [Source:Register]  | Performs bitwise `OR`. Destination = Destination \| Source                                              |
 | 28     | Bitwise    | XOR          | [Destination:Register] [Source:Register]  | Performs bitwise `XOR`. Destination = Destination ^ Source                                              |
 | 29     | Bitwise    | NOT          | [Destination:Register]                    | Performs bitwise `NOT`. Destination = ~Destination                                                      |
 | 30     | Bitwise    | SHL          | [Destination:Register] [Source:Register]  | Performs bitwise `ShiftLeft`. Destination = Destination << Source                                       |
