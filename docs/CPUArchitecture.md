@@ -127,4 +127,4 @@
 | 0 - 7      | 256                    | Unsigned Byte  | Opcode       |
 | 8 - 23     | 65535                  | Unsigned Short | First value  |
 | 14 - 63    |                        |                | Reserved     |
-| 64 - 127   | 2^64                   | Signed Long    | Second value |
+| 64 - 127   | 2^64                   | Signed Double  | Second value |
