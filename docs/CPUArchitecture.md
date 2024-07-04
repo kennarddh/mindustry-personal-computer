@@ -50,69 +50,81 @@
 
 ## Instruction Set
 
-| Opcode | Type       | Abbreviation | Parameters                                  | Description                                                                                             |
-| ------ | ---------- | ------------ | ------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------ |
-| 0      | Math       | ADD          | [Destination:Register] [Source:Register]    | Performs addition. Destination = Destination + Source                                                   |
-| 1      | Math       | SUB          | [Destination:Register] [Source:Register]    | Performs subtraction. Destination = Destination - Source                                                |
-| 2      | Math       | MUL          | [Destination:Register] [Source:Register]    | Performs multiplication. Destination = Destination \* Source                                            |
-| 3      | Math       | DIV          | [Destination:Register] [Source:Register]    | Performs division. Destination = Destination / Source                                                   |
-| 4      | Math       | IDIV         | [Destination:Register] [Source:Register]    | Performs int division. Destination = Destination // Source                                              |
-| 5      | Math       | MOD          | [Destination:Register] [Source:Register]    | Performs modulo. Destination = Destination % Source                                                     |
-| 6      | Math       | EXP          | [Destination:Register] [Source:Register]    | Performs exponent. Destination = Destination \*\* Source                                                |
-| 7      | Math       | EXPE         | [Destination:Register]                      | Performs exponent to the `e`. Destination = Destination \*\* `e`                                        |
-| 8      | Math       | LOG          | [Destination:Register]                      | Performs logarithm with base 10. Destination = log 10 (Destination)                                     |
-| 9      | Math       | LOGN         | [Destination:Register]                      | Performs logarithm with base `e`. Destination = log e (Destination)                                     |
-| 10     | Math       | SQRT         | [Destination:Register]                      | Performs square root. Destination = sqrt(Destination)                                                   |
-| 11     | Math       | MAX          | [Destination:Register] [Source:Register]    | Performs max. Destination = max(Destination, Source)                                                    |
-| 12     | Math       | MIN          | [Destination:Register] [Source:Register]    | Performs min. Destination = min(Destination, Source)                                                    |
-| 13     | Math       | FLR          | [Destination:Register]                      | Performs floor. Destination = floor(Destination)                                                        |
-| 14     | Math       | CEIL         | [Destination:Register]                      | Performs ceil. Destination = ceil(Destination)                                                          |
-| 15     | Math       | ABS          | [Destination:Register]                      | Performs abs. Destination = abs(Destination)                                                            |
-| 16     | Math       | SIN          | [Destination:Register]                      | Performs sine. Destination = sin(Destination)                                                           |
-| 17     | Math       | COS          | [Destination:Register]                      | Performs cosine. Destination = cos(Destination)                                                         |
-| 18     | Math       | TAN          | [Destination:Register]                      | Performs tangent. Destination = tan(Destination)                                                        |
-| 19     | Math       | ASIN         | [Destination:Register]                      | Performs arc-sine. Destination = asin(Destination)                                                      |
-| 20     | Math       | ACOS         | [Destination:Register]                      | Performs arc-cosine. Destination = acos(Destination)                                                    |
-| 21     | Math       | ATAN         | [Destination:Register]                      | Performs arc-tangent. Destination = atan(Destination)                                                   |
-| 22     | Math       | RAND         | [Destination:Register]                      | Performs float random from 0 to Destination. Destination = rand(0, Destination)                         |
-| 23     | Math       | INC          | [Destination:Register]                      | Increment by 1. Destination = Destination + 1                                                           |
-| 24     | Math       | DEC          | [Destination:Register]                      | Decrement by 1. Destination = Destination - 1                                                           |
-| 25     | Math       | CMP          | [Value1:Register] [Value2:Register]         | Performs `Value2` - `Value1`, set `SF`, `ZF`, `PF` flags and discard the result                         |
-| 26     | Bitwise    | AND          | [Destination:Register] [Source:Register]    | Performs bitwise `AND`. Destination = Destination & Source                                              |
-| 27     | Bitwise    | OR           | [Destination:Register] [Source:Register]    | Performs bitwise `OR`. Destination = Destination                                                        | Source |
-| 28     | Bitwise    | XOR          | [Destination:Register] [Source:Register]    | Performs bitwise `XOR`. Destination = Destination ^ Source                                              |
-| 29     | Bitwise    | NOT          | [Destination:Register]                      | Performs bitwise `NOT`. Destination = ~Destination                                                      |
-| 30     | Bitwise    | SHL          | [Destination:Register] [Source:Register]    | Performs bitwise `ShiftLeft`. Destination = Destination << Source                                       |
-| 31     | Bitwise    | SHR          | [Destination:Register] [Source:Register]    | Performs bitwise `ShiftRight`. Destination = Destination >> Source                                      |
-| 32     | Bitwise    | TEST         | [Value1:Register] [Value2:Register]         | Performs `SUB` on operands, set `SF`, `ZF`, `PF` flags and discard the result                           |
-| 33     | ControFlow | CALL         | [Type:Number] [Value:Register]              | Push RIP and Call procedure. If type is 0, it's a relative address else absolute                        |
-| 34     | ControFlow | RET          | [O:HowManyToPopAfter:Register]              | Return from procedure. The argument is optional and defaults to 0                                       |
-| 35     | ControFlow | HLT          |                                             | Enter halt state                                                                                        |
-| 36     | ControFlow | IRET         |                                             | Return from interrupt                                                                                   |
-| 37     | ControFlow | JMP          | [Type:Number] [Value:Register]              | If type is 0, it's a relative address else absolute                                                     |
-| 38     | ControFlow | JP           | [Type:Number] [Value:Register]              | Jump if parity. If type is 0, it's a relative address else absolute                                     |
-| 39     | ControFlow | JNP          | [Type:Number] [Value:Register]              | Jump if not parity. If type is 0, it's a relative address else absolute                                 |
-| 40     | ControFlow | JZ           | [Type:Number] [Value:Register]              | Jump if zero. If type is 0, it's a relative address else absolute                                       |
-| 41     | ControFlow | JNZ          | [Type:Number] [Value:Register]              | Jump if not zero. If type is 0, it's a relative address else absolute                                   |
-| 42     | ControFlow | JS           | [Type:Number] [Value:Register]              | Jump if sign. If type is 0, it's a relative address else absolute                                       |
-| 43     | ControFlow | JNS          | [Type:Number] [Value:Register]              | Jump if not sign. If type is 0, it's a relative address else absolute                                   |
-| 44     | ControFlow | JL           | [Type:Number] [Value:Register]              | Jump if less than. If type is 0, it's a relative address else absolute                                  |
-| 45     | ControFlow | JLE          | [Type:Number] [Value:Register]              | Jump if less than or equal. If type is 0, it's a relative address else absolute                         |
-| 46     | ControFlow | JG           | [Type:Number] [Value:Register]              | Jump if greater than. If type is 0, it's a relative address else absolute                               |
-| 47     | ControFlow | JGE          | [Type:Number] [Value:Register]              | Jump if greater than or equal. If type is 0, it's a relative address else absolute                      |
-| 48     | ControFlow | LOOP         | [Type:Number] [Value:Register]              | Jump if RCX is not 0. If type is 0, it's a relative address else absolute                               |
-| 49     | Stack      | PUSH         | [Source:Register]                           | Push to the top of the stack                                                                            |
-| 50     | Stack      | PUSHF        |                                             | Push the RFLAGS register to the top of the stack                                                        |
-| 51     | Stack      | POP          | [Destination:Register]                      | Pop from the top of the stack                                                                           |
-| 52     | Stack      | POPF         |                                             | Pop the RFLAGS register from the top of the stack                                                       |
-| 53     | Data       | MOV          | [Destination:Register] [Source:Register]    | Copy data from one register to another                                                                  |
-| 54     | Data       | SWP          | [Register1:Register] [Register2:Register]   | Swap two registers with each other                                                                      |
-| 55     | Data       | LOAD         | [Type:Number] [Destination:Register]        | Load from memory address stored in the destination register itself and load memory to the same register |
-| 56     | Data       | STRR         | [Destination:Register] [Source:Register]    | Store register to relative memory address stored in register                                            |
-| 57     | Data       | STRA         | [Destination:Register] [Source:Register]    | Store register to absolute memory address stored in register                                            |
-| 58     | Data       | LDI          | [Destination:Register] [Source:Number]      | Load immediate value to destination register                                                            |
-| 59     | Data       | RIP          | [Destination:Register]                      | Load `Instruction Pointer` special register to destination register                                     |
-| 60     | Interrupt  | SETISRR      | [InterruptVector:Number] [Address:Register] | Set ISR relative address from register for an interrupt vector                                          |
-| 61     | Interrupt  | SETISRA      | [InterruptVector:Number] [Address:Register] | Set ISR absolute address from register for an interrupt vector                                          |
-| 62     | Interrupt  | INT          | [InteruptVector:Register]                   | Call to interrupt.                                                                                      |
-| 63     | Other      | NOP          |                                             | No operation                                                                                            |
+| Opcode | Type       | Abbreviation | Parameters                                | Description                                                                                             |
+| ------ | ---------- | ------------ | ----------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------ |
+| 0      | Math       | ADD          | [Destination:Register] [Source:Register]  | Performs addition. Destination = Destination + Source                                                   |
+| 1      | Math       | SUB          | [Destination:Register] [Source:Register]  | Performs subtraction. Destination = Destination - Source                                                |
+| 2      | Math       | MUL          | [Destination:Register] [Source:Register]  | Performs multiplication. Destination = Destination \* Source                                            |
+| 3      | Math       | DIV          | [Destination:Register] [Source:Register]  | Performs division. Destination = Destination / Source                                                   |
+| 4      | Math       | IDIV         | [Destination:Register] [Source:Register]  | Performs int division. Destination = Destination // Source                                              |
+| 5      | Math       | MOD          | [Destination:Register] [Source:Register]  | Performs modulo. Destination = Destination % Source                                                     |
+| 6      | Math       | EXP          | [Destination:Register] [Source:Register]  | Performs exponent. Destination = Destination \*\* Source                                                |
+| 7      | Math       | EXPE         | [Destination:Register]                    | Performs exponent to the `e`. Destination = Destination \*\* `e`                                        |
+| 8      | Math       | LOG          | [Destination:Register]                    | Performs logarithm with base 10. Destination = log 10 (Destination)                                     |
+| 9      | Math       | LOGN         | [Destination:Register]                    | Performs logarithm with base `e`. Destination = log e (Destination)                                     |
+| 10     | Math       | SQRT         | [Destination:Register]                    | Performs square root. Destination = sqrt(Destination)                                                   |
+| 11     | Math       | MAX          | [Destination:Register] [Source:Register]  | Performs max. Destination = max(Destination, Source)                                                    |
+| 12     | Math       | MIN          | [Destination:Register] [Source:Register]  | Performs min. Destination = min(Destination, Source)                                                    |
+| 13     | Math       | FLR          | [Destination:Register]                    | Performs floor. Destination = floor(Destination)                                                        |
+| 14     | Math       | CEIL         | [Destination:Register]                    | Performs ceil. Destination = ceil(Destination)                                                          |
+| 15     | Math       | ABS          | [Destination:Register]                    | Performs abs. Destination = abs(Destination)                                                            |
+| 16     | Math       | SIN          | [Destination:Register]                    | Performs sine. Destination = sin(Destination)                                                           |
+| 17     | Math       | COS          | [Destination:Register]                    | Performs cosine. Destination = cos(Destination)                                                         |
+| 18     | Math       | TAN          | [Destination:Register]                    | Performs tangent. Destination = tan(Destination)                                                        |
+| 19     | Math       | ASIN         | [Destination:Register]                    | Performs arc-sine. Destination = asin(Destination)                                                      |
+| 20     | Math       | ACOS         | [Destination:Register]                    | Performs arc-cosine. Destination = acos(Destination)                                                    |
+| 21     | Math       | ATAN         | [Destination:Register]                    | Performs arc-tangent. Destination = atan(Destination)                                                   |
+| 22     | Math       | RAND         | [Destination:Register]                    | Performs float random from 0 to Destination. Destination = rand(0, Destination)                         |
+| 23     | Math       | INC          | [Destination:Register]                    | Increment by 1. Destination = Destination + 1                                                           |
+| 24     | Math       | DEC          | [Destination:Register]                    | Decrement by 1. Destination = Destination - 1                                                           |
+| 25     | Math       | CMP          | [Value1:Register] [Value2:Register]       | Performs `Value2` - `Value1`, set `SF`, `ZF`, `PF` flags and discard the result                         |
+| 26     | Bitwise    | AND          | [Destination:Register] [Source:Register]  | Performs bitwise `AND`. Destination = Destination & Source                                              |
+| 27     | Bitwise    | OR           | [Destination:Register] [Source:Register]  | Performs bitwise `OR`. Destination = Destination                                                        | Source |
+| 28     | Bitwise    | XOR          | [Destination:Register] [Source:Register]  | Performs bitwise `XOR`. Destination = Destination ^ Source                                              |
+| 29     | Bitwise    | NOT          | [Destination:Register]                    | Performs bitwise `NOT`. Destination = ~Destination                                                      |
+| 30     | Bitwise    | SHL          | [Destination:Register] [Source:Register]  | Performs bitwise `ShiftLeft`. Destination = Destination << Source                                       |
+| 31     | Bitwise    | SHR          | [Destination:Register] [Source:Register]  | Performs bitwise `ShiftRight`. Destination = Destination >> Source                                      |
+| 32     | Bitwise    | TEST         | [Value1:Register] [Value2:Register]       | Performs `SUB` on operands, set `SF`, `ZF`, `PF` flags and discard the result                           |
+| 33     | ControFlow | CALL         | [Type:Byte] [Value:Register]              | Push RIP and Call procedure. If type is 0, it's a relative address else absolute                        |
+| 34     | ControFlow | RET          | [O:HowManyToPopAfter:Register]            | Return from procedure. The argument is optional and defaults to 0                                       |
+| 35     | ControFlow | HLT          |                                           | Enter halt state                                                                                        |
+| 36     | ControFlow | IRET         |                                           | Return from interrupt                                                                                   |
+| 37     | ControFlow | JMP          | [Type:Byte] [Value:Register]              | If type is 0, it's a relative address else absolute                                                     |
+| 38     | ControFlow | JP           | [Type:Byte] [Value:Register]              | Jump if parity. If type is 0, it's a relative address else absolute                                     |
+| 39     | ControFlow | JNP          | [Type:Byte] [Value:Register]              | Jump if not parity. If type is 0, it's a relative address else absolute                                 |
+| 40     | ControFlow | JZ           | [Type:Byte] [Value:Register]              | Jump if zero. If type is 0, it's a relative address else absolute                                       |
+| 41     | ControFlow | JNZ          | [Type:Byte] [Value:Register]              | Jump if not zero. If type is 0, it's a relative address else absolute                                   |
+| 42     | ControFlow | JS           | [Type:Byte] [Value:Register]              | Jump if sign. If type is 0, it's a relative address else absolute                                       |
+| 43     | ControFlow | JNS          | [Type:Byte] [Value:Register]              | Jump if not sign. If type is 0, it's a relative address else absolute                                   |
+| 44     | ControFlow | JL           | [Type:Byte] [Value:Register]              | Jump if less than. If type is 0, it's a relative address else absolute                                  |
+| 45     | ControFlow | JLE          | [Type:Byte] [Value:Register]              | Jump if less than or equal. If type is 0, it's a relative address else absolute                         |
+| 46     | ControFlow | JG           | [Type:Byte] [Value:Register]              | Jump if greater than. If type is 0, it's a relative address else absolute                               |
+| 47     | ControFlow | JGE          | [Type:Byte] [Value:Register]              | Jump if greater than or equal. If type is 0, it's a relative address else absolute                      |
+| 48     | ControFlow | LOOP         | [Type:Byte] [Value:Register]              | Jump if RCX is not 0. If type is 0, it's a relative address else absolute                               |
+| 49     | Stack      | PUSH         | [Source:Register]                         | Push to the top of the stack                                                                            |
+| 50     | Stack      | PUSHF        |                                           | Push the RFLAGS register to the top of the stack                                                        |
+| 51     | Stack      | POP          | [Destination:Register]                    | Pop from the top of the stack                                                                           |
+| 52     | Stack      | POPF         |                                           | Pop the RFLAGS register from the top of the stack                                                       |
+| 53     | Data       | MOV          | [Destination:Register] [Source:Register]  | Copy data from one register to another                                                                  |
+| 54     | Data       | SWP          | [Register1:Register] [Register2:Register] | Swap two registers with each other                                                                      |
+| 55     | Data       | LOAD         | [Type:Byte] [Destination:Register]        | Load from memory address stored in the destination register itself and load memory to the same register |
+| 56     | Data       | STRR         | [Destination:Register] [Source:Register]  | Store register to relative memory address stored in register                                            |
+| 57     | Data       | STRA         | [Destination:Register] [Source:Register]  | Store register to absolute memory address stored in register                                            |
+| 58     | Data       | LDI          | [Destination:Register] [Source:Number]    | Load immediate value to destination register                                                            |
+| 59     | Data       | RIP          | [Destination:Register]                    | Load `Instruction Pointer` special register to destination register                                     |
+| 60     | Interrupt  | SETISRR      | [InterruptVector:Byte] [Address:Register] | Set ISR relative address from register for an interrupt vector                                          |
+| 61     | Interrupt  | SETISRA      | [InterruptVector:Byte] [Address:Register] | Set ISR absolute address from register for an interrupt vector                                          |
+| 62     | Interrupt  | INT          | [InteruptVector:Register]                 | Call to interrupt.                                                                                      |
+| 63     | Other      | NOP          |                                           | No operation                                                                                            |
+
+## Instruction Encoding
+
+-   All instructions has same and fixed length
+-   128 bits long
+
+| Bits Range | Description  |
+| ---------- | ------------ |
+| 0 - 7      | Opcode       |
+| 8 - 15     | First value  |
+| 16 - 63    | Reserved     |
+| 64 - 127   | Second value |
