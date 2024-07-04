@@ -126,3 +126,10 @@
 | 8 - 23     | 65535                  | Unsigned Short | First value  |
 | 14 - 63    |                        |                | Reserved     |
 | 64 - 127   | 2^64                   | Signed Double  | Second value |
+
+## TODO
+
+-   [ ] IO instructions
+-   [ ] Pipelining
+-   [ ] Interrupt Prioritization
+-   [ ] Interrupt Masking
