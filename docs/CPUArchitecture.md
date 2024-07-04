@@ -122,9 +122,9 @@
 -   All instructions has same and fixed length
 -   128 bits long
 
-| Bits Range | Description  |
-| ---------- | ------------ |
-| 0 - 7      | Opcode       |
-| 8 - 15     | First value  |
-| 16 - 63    | Reserved     |
-| 64 - 127   | Second value |
+| Bits Range | Total Different Values | Type           | Description  |
+| ---------- | ---------------------- | -------------- | ------------ |
+| 0 - 7      | 256                    | Unsigned Byte  | Opcode       |
+| 8 - 23     | 65535                  | Unsigned Short | First value  |
+| 14 - 63    |                        |                | Reserved     |
+| 64 - 127   | 2^64                   | Signed Long    | Second value |
