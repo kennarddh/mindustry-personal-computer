@@ -112,9 +112,9 @@
 | 57     | Data       | STRA         | [Destination:Register] [Source:Register]  | Store register to absolute memory address stored in register                                            |
 | 58     | Data       | LDI          | [Destination:Register] [Source:Number]    | Load immediate value to destination register                                                            |
 | 59     | Data       | RIP          | [Destination:Register]                    | Load `Instruction Pointer` special register to destination register                                     |
-| 60     | Interrupt  | SETISRR      | [InterruptVector:Byte] [Address:Register] | Set ISR relative address from register for an interrupt vector                                          |
-| 61     | Interrupt  | SETISRA      | [InterruptVector:Byte] [Address:Register] | Set ISR absolute address from register for an interrupt vector                                          |
-| 62     | Interrupt  | INT          | [InteruptVector:Register]                 | Call to interrupt.                                                                                      |
+| 60     | Interrupt  | SETISRR      | [InteruptNumber:Byte] [Address:Register]  | Set ISR relative address from register for an interrupt                                                 |
+| 61     | Interrupt  | SETISRA      | [InteruptNumber:Byte] [Address:Register]  | Set ISR absolute address from register for an interrupt                                                 |
+| 62     | Interrupt  | INT          | [InteruptNumber:Register]                 | Call to interrupt.                                                                                      |
 | 63     | Other      | NOP          |                                           | No operation                                                                                            |
 | 64     | IO         | IN           | [Destination:Register] [Port:Register]    | Read data from IO port and set the inbound ready flag to 0                                              |
 | 65     | IO         | OUT          | [Source:Register] [Port:Register]         | Write data to IO port and set the outbound ready flag to 1                                              |
@@ -140,7 +140,7 @@
 -   Each port will have 64 bit inbound and outbound data
 -   There is data ready flag for each inbound and outbound
 -   Outbound means from cpu to device and inbound means from device to cpu
--   When either `in` or `out` instruction is used but the data ready flag is 0 for the corresponding flag the cpu will interrupt with vector 5
+-   When either `in` or `out` instruction is used but the data ready flag is 0 for the corresponding flag the cpu will do interrupt 5
 
 ## TODO
 
