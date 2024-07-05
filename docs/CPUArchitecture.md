@@ -42,7 +42,9 @@
 | 1         | Processor Exception | Invalid Opcode                 |
 | 2         | Processor Exception | Access to out of bounds memory |
 | 3         | Processor Exception | Access to invalid register     |
-| 4 - 63    | Processor Exception | Reserved                       |
+| 4         | Processor Exception | Access to not ready IO port    |
+| 5         | Processor Exception | Access to invalid IO port      |
+| 6 - 63    | Processor Exception | Reserved                       |
 | 64 - 127  | Hardware Interrupt  | Reserved for IRQ interrupts    |
 | 128 - 511 | Software Interrupt  | Software Interrupt             |
 
@@ -114,6 +116,10 @@
 | 61     | Interrupt  | SETISRA      | [InterruptVector:Byte] [Address:Register] | Set ISR absolute address from register for an interrupt vector                                          |
 | 62     | Interrupt  | INT          | [InteruptVector:Register]                 | Call to interrupt.                                                                                      |
 | 63     | Other      | NOP          |                                           | No operation                                                                                            |
+| 64     | IO         | IN           | [Destination:Register] [Port:Register]    | Read data from IO port and set the inbound ready flag to 0                                              |
+| 65     | IO         | OUT          | [Source:Register] [Port:Register]         | Write data to IO port and set the outbound ready flag to 1                                              |
+| 66     | IO         | INR          | [Destination:Register] [Port:Register]    | Store IO port's inbound data ready flag into register                                                   |
+| 67     | IO         | OUTR         | [Destination:Register] [Port:Register]    | Store IO port's outbound data ready flag into register                                                  |
 
 ## Instruction Encoding
 
@@ -127,6 +133,15 @@
 | 14 - 63    |                        |                | Reserved     |
 | 64 - 127   | 2^64                   | Signed Double  | Second value |
 
+## IO
+
+-   Every port support duplex data transfer
+-   There are 128 ports
+-   Each port will have 64 bit inbound and outbound data
+-   There is data ready flag for each inbound and outbound
+-   Outbound means from cpu to device and inbound means from device to cpu
+-   When either `in` or `out` instruction is used but the data ready flag is 0 for the corresponding flag the cpu will interrupt with vector 5
+
 ## TODO
 
 -   [ ] IO Instructions
@@ -135,3 +150,10 @@
 -   [ ] Interrupt Masking
 -   [ ] CPUID instructions
 -   [ ] CMOVCC instruction?
+-   [ ] Cache eviction policy?
+-   [ ] IRQ priority should be configurable
+
+## Notes
+
+-   If cpu get interrupt when another interrupt is running it will put it in a prioritized queue based on the interrupt priority or discard it (easier, bad)
+-   If cpu get interrupt that currently masked it should be queued until it's no longer masked
