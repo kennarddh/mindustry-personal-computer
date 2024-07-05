@@ -140,7 +140,7 @@
 -   Each port will have 64 bit inbound and outbound data
 -   There is data ready flag for each inbound and outbound
 -   Outbound means from cpu to device and inbound means from device to cpu
--   When either `in` or `out` instruction is used but the data ready flag is 0 for the corresponding flag the cpu will do interrupt 5
+-   When either `in` or `out` instruction is used but the data ready flag is 0 for the corresponding flag the cpu will generates a `Processor Exception` interrupt 5
 
 ## TODO
 
