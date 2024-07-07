@@ -52,13 +52,13 @@
 
 | Opcode | Type       | Abbreviation | Parameters                                | Description                                                                                             |
 | ------ | ---------- | ------------ | ----------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| 0      | Math       | ADD          | [Destination:Register] [Source:Register]  | Performs addition. Destination = Destination + Source                                                   |
-| 1      | Math       | SUB          | [Destination:Register] [Source:Register]  | Performs subtraction. Destination = Destination - Source                                                |
-| 2      | Math       | MUL          | [Destination:Register] [Source:Register]  | Performs multiplication. Destination = Destination \* Source                                            |
-| 3      | Math       | DIV          | [Destination:Register] [Source:Register]  | Performs division. Destination = Destination / Source                                                   |
-| 4      | Math       | IDIV         | [Destination:Register] [Source:Register]  | Performs int division. Destination = Destination // Source                                              |
-| 5      | Math       | MOD          | [Destination:Register] [Source:Register]  | Performs modulo. Destination = Destination % Source                                                     |
-| 6      | Math       | EXP          | [Destination:Register] [Source:Register]  | Performs exponent. Destination = Destination \*\* Source                                                |
+| 0      | Math       | ADD          | [Destination] [Source]                    | Performs addition. Destination = Destination + Source                                                   |
+| 1      | Math       | SUB          | [Destination] [Source]                    | Performs subtraction. Destination = Destination - Source                                                |
+| 2      | Math       | MUL          | [Destination] [Source]                    | Performs multiplication. Destination = Destination \* Source                                            |
+| 3      | Math       | DIV          | [Destination] [Source]                    | Performs division. Destination = Destination / Source                                                   |
+| 4      | Math       | IDIV         | [Destination] [Source]                    | Performs int division. Destination = Destination // Source                                              |
+| 5      | Math       | MOD          | [Destination] [Source]                    | Performs modulo. Destination = Destination % Source                                                     |
+| 6      | Math       | EXP          | [Destination] [Source]                    | Performs exponent. Destination = Destination \*\* Source                                                |
 | 7      | Math       | EXPE         | [Destination:Register]                    | Performs exponent to the `e`. Destination = Destination \*\* `e`                                        |
 | 8      | Math       | LOG          | [Destination:Register]                    | Performs logarithm with base 10. Destination = log 10 (Destination)                                     |
 | 9      | Math       | LOGN         | [Destination:Register]                    | Performs logarithm with base `e`. Destination = log e (Destination)                                     |
@@ -119,19 +119,23 @@
 | 64     | IO         | IN           | [Destination:Register] [Port:Register]    | Read data from IO port and set the inbound ready flag to 0                                              |
 | 65     | IO         | OUT          | [Source:Register] [Port:Register]         | Write data to IO port and set the outbound ready flag to 1                                              |
 | 66     | IO         | INR          | [Destination:Register] [Port:Register]    | Store IO port's inbound data ready flag into register                                                   |
-| 67     | IO         | OUTR         | [Destination:Register] [Port:Register]    | Store IO port's outbound data ready flag into register                                                  |
+| 67     | IO         | OUTR         | [Destination] [Port]                      | Store IO port's outbound data ready flag into register                                                  |
 
 ## Instruction Encoding
 
 -   All instructions has same and fixed length
 -   128 bits long
 
-| Bits Range | Total Different Values | Type           | Description  |
-| ---------- | ---------------------- | -------------- | ------------ |
-| 0 - 7      | 256                    | Unsigned Byte  | Opcode       |
-| 8 - 23     | 65535                  | Unsigned Short | First value  |
-| 14 - 63    |                        |                | Reserved     |
-| 64 - 127   | 2^64                   | Signed Double  | Second value |
+| Bits Range | Total Different Values | Type                   | Description                                                                                              |
+| ---------- | ---------------------- | ---------------------- | -------------------------------------------------------------------------------------------------------- |
+| 0 - 7      | 256                    | Unsigned Byte          | Opcode                                                                                                   |
+| 8 - 9      | 4                      | Unsigned 2 Bits Number | InKind for FirstValue. Where to get value from. 0: Register, 1: Memory, 2: Immediate value, 3: Reserved  |
+| 10 - 25    | 65535                  | Unsigned Short         | FirstValue                                                                                               |
+| 26 - 50    |                        |                        | Reserved                                                                                                 |
+| 51 - 52    | 4                      | Unsigned 2 Bits Number | InKind for SecondValue. Where to get value from. 0: Register, 1: Memory, 2: Immediate value, 3: Reserved |
+| 64 - 127   | 2^64                   | Signed Double          | SecondValue                                                                                              |
+
+For some instruction that assign's result to
 
 ## IO
 
