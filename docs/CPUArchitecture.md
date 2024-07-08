@@ -157,7 +157,7 @@
 | 16 - 31    | 65535                  | Unsigned Short | FirstValue                                                                                  |
 | 32 - 44    |                        |                | Reserved                                                                                    |
 | 45 - 52    | 256                    | Unsigned Short | InKind for SecondValue. Where to get value from. 0: Register, 1: Memory, 2: Immediate value |
-| 64 - 127   | 2^64                   | Signed Double  | SecondValue                                                                                 |
+| 64 - 127   | 2^64                   | Double         | SecondValue                                                                                 |
 
 ## IO
 
