@@ -130,9 +130,9 @@
 
 | Key | Description                                                                                                                                                                     |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 0   | Write CPU vendor encoded with [`SMCE`](./StandardMindustryCharacterEncoding.md) to stack, the first character will be on top of the stack and write the string length to RAX    |
+| 0   | Write CPU vendor encoded as [`SMCE`](./StandardMindustryCharacterEncoding.md) to stack, the first character will be on top of the stack and write the string length to RAX    |
 | 1   | Write CPU vendor id to RAX                                                                                                                                                      |
-| 2   | Write CPU full name encoded with [`SMCE`](./StandardMindustryCharacterEncoding.md) to stack, the first character will be on top of the stack and write the string length to RAX |
+| 2   | Write CPU full name encoded as [`SMCE`](./StandardMindustryCharacterEncoding.md) to stack, the first character will be on top of the stack and write the string length to RAX |
 | 3   | Write CPU id to RAX. Multiple vendor might have the same CPU id.                                                                                                                |
 
 ## Instruction Encoding
