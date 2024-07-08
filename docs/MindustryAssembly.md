@@ -17,9 +17,9 @@
 ImmediateValue = <Double>
 MemoryAddress = "[" <Max53BitsInteger> "]"
 Register = RAX | RBX | RCX | RDX | RPX | RDX | RSI | RDI | RIP | IR | RSP | RBP | RFLAGS
-Value = ImmediateValue | MemoryAddress  | Register
-InCaseSensitiveOpcodeAbbreviation = <IncaseSensitiveOpcodes>
+Value = ImmediateValue | MemoryAddress  | (CaseInsestive:Register)
+CaseInsensitiveOpcodeAbbreviation = <caseInsensitiveOpcodes>
 Comment = ";" <String>
-Line = (InCaseSensitiveOpcodeAbbreviation Value ", " Value [Comment]) | <LineFeed>
+Line = (CaseInsensitiveOpcodeAbbreviation Value ", " Value [Comment]) | <LineFeed>
 Program = {Line}
 ```
