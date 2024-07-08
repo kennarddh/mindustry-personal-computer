@@ -3,6 +3,7 @@
 ## L1 Cache
 
 -   512 Address
+-   When the CPU needs to store more cache but there is no space left, the `CacheController` will randomly replace cached memory address with the new one
 
 ## Registers
 
@@ -128,12 +129,12 @@
 
 ## CPUID
 
-| Key | Description                                                                                                                                                                     |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Key | Description                                                                                                                                                                   |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 0   | Write CPU vendor encoded as [`SMCE`](./StandardMindustryCharacterEncoding.md) to stack, the first character will be on top of the stack and write the string length to RAX    |
-| 1   | Write CPU vendor id to RAX                                                                                                                                                      |
+| 1   | Write CPU vendor id to RAX                                                                                                                                                    |
 | 2   | Write CPU full name encoded as [`SMCE`](./StandardMindustryCharacterEncoding.md) to stack, the first character will be on top of the stack and write the string length to RAX |
-| 3   | Write CPU id to RAX. Multiple vendor might have the same CPU id.                                                                                                                |
+| 3   | Write CPU id to RAX. Multiple vendor might have the same CPU id.                                                                                                              |
 
 ## Instruction Encoding
 
@@ -170,7 +171,7 @@
 -   [ ] Interrupt Masking
 -   [x] CPUID instructions
 -   [x] CMOVCC instruction
--   [ ] Cache eviction policy?
+-   [x] Cache eviction policy?
 -   [ ] IRQ priority should be configurable
 -   [ ] Queued interrupt
 
