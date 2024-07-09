@@ -10,8 +10,29 @@ const code = codeBuffer.toString()
 
 const compiler = new Compiler()
 
-compiler.compile(code)
+const compileDurations: [number, number][] = []
+
+for (let i = 0; i < 1000; i++) {
+	console.log(`Processing ${i}`)
+
+	const start = process.hrtime()
+
+	compiler.compile(code)
+
+	const duration = process.hrtime(start)
+
+	compileDurations.push(duration)
+}
 
 const duration = process.hrtime(start)
 
+const length = compileDurations.length
+for (let i = 0; i < length; i++) {
+	const compileDuration = compileDurations[i]!
+
+	console.log(`Done compile ${i} in ${prettyTime(compileDuration, 'ns')}`)
+}
+
 console.log(`Done in ${prettyTime(duration, 'ns')}`)
+
+// Add average compile duration
