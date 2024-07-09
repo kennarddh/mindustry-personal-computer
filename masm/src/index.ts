@@ -5,6 +5,7 @@ const compiler = new Compiler()
 const code = `mov RAX, 10  ; load 10 to RAX
 mov RDX, 20   
 add RAX,  rDX ; add value
+add RAX,  rDX ; add value
 ADD rax, 1   0 ; add 10 to RAX
 mov [255], RaX ; store result to memory address 255
 `

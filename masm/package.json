@@ -5,6 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"start": "tsx ./src/index.ts",
+		"benchmark": "tsx ./src/Benchmark.ts",
 		"prettier:fix": "prettier -w \"./**/*.{ts,json,md,prettierrc}\"",
 		"prettier:check": "prettier -c \"./**/*.{ts,json,md,prettierrc}\"",
 		"types:check": "tsc --noEmit",
@@ -16,9 +17,13 @@
 	"license": "MIT",
 	"devDependencies": {
 		"@types/node": "^20.12.7",
+		"@types/pretty-time": "^1.1.5",
 		"prettier": "^3.2.5",
 		"rimraf": "^5.0.7",
 		"tsx": "^4.10.2",
 		"typescript": "^5.4.5"
+	},
+	"dependencies": {
+		"pretty-time": "^1.1.0"
 	}
 }
