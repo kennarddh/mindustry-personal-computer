@@ -27,12 +27,17 @@ for (let i = 0; i < 1000; i++) {
 const duration = process.hrtime(start)
 
 const length = compileDurations.length
+
 for (let i = 0; i < length; i++) {
 	const compileDuration = compileDurations[i]!
 
 	console.log(`Done compile ${i} in ${prettyTime(compileDuration, 'ns')}`)
 }
 
-console.log(`Done in ${prettyTime(duration, 'ns')}`)
+const averageMS =
+	compileDurations
+		.map(duration => duration[0] * 1000 + duration[1] / 1000000)
+		.reduce((duration, acc) => acc + duration, 0) / compileDurations.length
 
-// Add average compile duration
+console.log(`Done in ${prettyTime(duration, 'ns')}.`)
+console.log(`Average compile duration: ${averageMS}ms.`)
