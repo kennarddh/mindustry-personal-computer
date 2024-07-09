@@ -17,14 +17,14 @@
 | 2   | General Purpose | RCX          | Counter              |                                               |
 | 3   | General Purpose | RDX          | Data                 |                                               |
 | 4   | General Purpose | RPX          | Pointer              |                                               |
-| 4   | General Purpose | RDX          | Data                 |                                               |
-| 5   | General Purpose | RSI          | Source Index         |                                               |
-| 6   | General Purpose | RDI          | Destinations Index   |                                               |
-| 7   | Special         | RIP          | Instruction Pointer  | Store current instruction address             |
-| 8   | Special         | IR           | Instruction Register | Store currently executed instruction          |
-| 9   | Stack           | RSP          | Stack Pointer        | Store address to the top of the stack         |
-| 10  | Stack           | RBP          | Frame Pointer        | Organize data within a function's stack frame |
-| 11  | Special         | RFLAGS       | Flags Register       | Collections of status and control flags       |
+| 5   | General Purpose | RDX          | Data                 |                                               |
+| 6   | General Purpose | RSI          | Source Index         |                                               |
+| 7   | General Purpose | RDI          | Destinations Index   |                                               |
+| 8   | Special         | RIP          | Instruction Pointer  | Store current instruction address             |
+| 9   | Special         | IR           | Instruction Register | Store currently executed instruction          |
+| 10  | Stack           | RSP          | Stack Pointer        | Store address to the top of the stack         |
+| 11  | Stack           | RBP          | Frame Pointer        | Organize data within a function's stack frame |
+| 12  | Special         | RFLAGS       | Flags Register       | Collections of status and control flags       |
 
 ### Flags Register
 
@@ -153,10 +153,10 @@
 | Bits Range | Total Different Values | Type           | Description                                                                                 |
 | ---------- | ---------------------- | -------------- | ------------------------------------------------------------------------------------------- |
 | 0 - 7      | 256                    | Unsigned Byte  | Opcode                                                                                      |
-| 8 - 15     | 256                    | Unsigned Short | InKind for FirstValue. Where to get value from. 0: Register, 1: Memory, 2: Immediate value  |
+| 8 - 15     | 256                    | Unsigned Byte  | InKind for FirstValue. Where to get value from. 0: Register, 1: Memory, 2: Immediate value  |
 | 16 - 31    | 65535                  | Unsigned Short | FirstValue                                                                                  |
-| 32 - 44    |                        |                | Reserved                                                                                    |
-| 45 - 52    | 256                    | Unsigned Short | InKind for SecondValue. Where to get value from. 0: Register, 1: Memory, 2: Immediate value |
+| 32 - 39    | 256                    | Unsigned Byte  | InKind for SecondValue. Where to get value from. 0: Register, 1: Memory, 2: Immediate value |
+| 40 - 52    |                        |                | Reserved                                                                                    |
 | 64 - 127   | 2^64                   | Double         | SecondValue                                                                                 |
 
 ## IO

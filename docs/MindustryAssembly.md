@@ -15,7 +15,7 @@
 
 ```
 ImmediateValue = <Double>
-MemoryAddress = "[" <Max53BitsInteger> "]"
+MemoryAddress = "[" <53BitsSignedInteger> "]"
 Register = RAX | RBX | RCX | RDX | RPX | RDX | RSI | RDI | RIP | IR | RSP | RBP | RFLAGS
 Value = ImmediateValue | MemoryAddress  | (CaseInsestive:Register)
 CaseInsensitiveOpcodeAbbreviation = <caseInsensitiveOpcodes>
