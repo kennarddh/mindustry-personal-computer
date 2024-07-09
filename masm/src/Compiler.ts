@@ -79,7 +79,9 @@ class Compiler {
 	}
 
 	private validateNumberString(value: string) {
-		for (let i = 0; i < value.length; i++) {
+		const length = value.length
+
+		for (let i = 0; i < length; i++) {
 			const character = value[i]!
 
 			if (!NumberCharacterSet.has(character)) return false
@@ -118,7 +120,9 @@ class Compiler {
 		let inComment = false
 		let lineState = LineState.Opcode
 
-		for (let i = 0; i < code.length; i++) {
+		const length = code.length
+
+		for (let i = 0; i < length; i++) {
 			const character = code[i]
 
 			switch (character) {
