@@ -186,6 +186,21 @@ class CustomBuffer {
 		}
 	}
 
+	clear(newCapacity: number): void
+	clear(preserveCapacity: true): void
+	clear(preserveCapacityOrNewCapacity: number | true): void {
+		if (preserveCapacityOrNewCapacity === true) {
+			this.#buffer.fill(0)
+			this.#length = 0
+			this.#offset = 0
+		} else {
+			this.#buffer = Buffer.alloc(preserveCapacityOrNewCapacity)
+			this.#capacity = preserveCapacityOrNewCapacity
+			this.#length = 0
+			this.#offset = 0
+		}
+	}
+
 	static fromBuffer(buffer: Buffer): CustomBuffer {
 		const newBuffer = CustomBuffer.alloc(buffer.length)
 
@@ -208,7 +223,6 @@ class CustomBuffer {
 		newBuffer.#buffer = Buffer.alloc(length)
 
 		newBuffer.#capacity = length
-		newBuffer.#length = 0
 
 		return newBuffer
 	}
