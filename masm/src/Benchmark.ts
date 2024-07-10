@@ -12,8 +12,10 @@ const compiler = new Compiler()
 
 const compileDurations: bigint[] = []
 
-for (let i = 0; i < 100; i++) {
-	console.log(`Processing ${i}`)
+const total = 1000
+
+for (let i = 0; i < total; i++) {
+	if (i % 100 === 0) console.log(`Processing ${i}/${total}`)
 
 	const start = process.hrtime.bigint()
 
