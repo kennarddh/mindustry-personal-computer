@@ -15,6 +15,8 @@
  * 63: Total addresses (Read only)
  */
 
+export {}
+
 const controlCellBuilding = getLink(0)
 const controlCell = new Memory(controlCellBuilding, 64)
 

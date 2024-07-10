@@ -1,3 +1,5 @@
+export {}
+
 const inputMemoryBuilding = getBuilding('cell1')
 const inputMemory = new Memory(inputMemoryBuilding, 64)
 
