@@ -1,43 +1,47 @@
 import Compiler from 'Compiler'
 import fs from 'fs/promises'
 import path from 'path'
-import prettyTime from 'pretty-time'
+import PrettyTime from 'PrettyTime'
 
-const start = process.hrtime()
+const start = process.hrtime.bigint()
 
 const codeBuffer = await fs.readFile(path.join(import.meta.dirname, '../temp/Benchmark.masm'))
 const code = codeBuffer.toString()
 
 const compiler = new Compiler()
 
-const compileDurations: [number, number][] = []
+const compileDurations: bigint[] = []
 
-for (let i = 0; i < 1000; i++) {
+for (let i = 0; i < 100; i++) {
 	console.log(`Processing ${i}`)
 
-	const start = process.hrtime()
+	const start = process.hrtime.bigint()
 
 	compiler.compile(code)
 
-	const duration = process.hrtime(start)
+	const end = process.hrtime.bigint()
+
+	const duration = end - start
 
 	compileDurations.push(duration)
 }
 
-const duration = process.hrtime(start)
+const end = process.hrtime.bigint()
+
+const duration = end - start
 
 const length = compileDurations.length
 
 for (let i = 0; i < length; i++) {
 	const compileDuration = compileDurations[i]!
 
-	console.log(`Done compile ${i} in ${prettyTime(compileDuration, 'ns')}`)
+	console.log(`Done compile ${i} in ${PrettyTime(compileDuration)}`)
 }
 
-const averageMS =
-	compileDurations
-		.map(duration => duration[0] * 1000 + duration[1] / 1000000)
-		.reduce((duration, acc) => acc + duration, 0) / compileDurations.length
+const sumNS = compileDurations.reduce((duration, acc) => acc + duration, 0n)
 
-console.log(`Done in ${prettyTime(duration, 'ns')}.`)
-console.log(`Average compile duration: ${averageMS}ms.`)
+const averageNS = sumNS / BigInt(compileDurations.length)
+
+console.log(`Done in ${PrettyTime(duration)}.`)
+console.log(`Total compile duration: ${PrettyTime(sumNS)}.`)
+console.log(`Average compile duration: ${PrettyTime(averageNS)}.`)
