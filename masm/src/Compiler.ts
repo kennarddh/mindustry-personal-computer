@@ -1,11 +1,12 @@
 import {
 	LineState,
-	NumberCharacterSet,
+	IntegerCharacterSet,
 	OpcodeToValueMap,
 	ReadOnlyRegisterIntSet,
 	RegisterToIntMap,
 	ValueInKind,
 	ValueInKindToNameLookup,
+	FloatCharacterSet,
 } from 'Constants'
 import CustomBuffer from 'CustomBuffer'
 
@@ -31,7 +32,7 @@ class Compiler {
 			throw new Error(`At line ${line}, value 2 is required for opcode "${opcode}".`)
 
 		const [isValue1Valid, value1, value1InKind] = this.parseValue(value1String!)
-		const [isValue2Valid, value2, value2InKind] = this.parseValue(value2String!)
+		const [isValue2Valid, value2, value2InKind] = this.parseValue(value2String!, true)
 
 		if (!isValue1Valid) throw new Error(`Invalid value 1 "${value1String}" at line ${line}.`)
 
@@ -88,19 +89,26 @@ class Compiler {
 		outputBuffer.writeDouble(value2)
 	}
 
-	private validateNumberString(value: string) {
+	private validateNumberString(value: string, allowDecimal = false) {
 		const length = value.length
 
 		for (let i = 0; i < length; i++) {
 			const character = value[i]!
 
-			if (!NumberCharacterSet.has(character)) return false
+			if (allowDecimal) {
+				if (!FloatCharacterSet.has(character)) return false
+			} else {
+				if (!IntegerCharacterSet.has(character)) return false
+			}
 		}
 
 		return true
 	}
 
-	private parseValue(value: string): [true, number, ValueInKind] | [false, null, null] {
+	private parseValue(
+		value: string,
+		allowDecimalAsImmediateValue = false,
+	): [true, number, ValueInKind] | [false, null, null] {
 		const uppercaseValue = value.toUpperCase()
 
 		if (RegisterToIntMap.has(uppercaseValue))
@@ -113,8 +121,8 @@ class Compiler {
 				return [true, parseInt(numberString, 10), ValueInKind.Memory]
 		}
 
-		if (this.validateNumberString(value))
-			return [true, parseInt(value, 10), ValueInKind.ImmediateValue]
+		if (this.validateNumberString(value, allowDecimalAsImmediateValue))
+			return [true, parseFloat(value), ValueInKind.ImmediateValue]
 
 		return [false, null, null]
 	}

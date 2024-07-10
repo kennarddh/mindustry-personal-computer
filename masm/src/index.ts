@@ -4,6 +4,8 @@ const compiler = new Compiler()
 
 const code = `mov RAX, 10  ; load 10 to RAX
 mov RDX, 20   
+mov RDX, .1 ; equal to 0.1
+mov RDX, 1.2
 add RAX,  rDX ; add value
 add RAX,  rDX ; add value
 ADD rax, 1   0 ; add 10 to RAX
@@ -16,6 +18,6 @@ console.log(
 	result.buffer
 		.toString('hex')
 		.match(/.{1,32}/g)
-		?.map(each => each.match(/.{1,2}/g)?.join(' '))
+		?.map((each, index) => `${index}: ${each.match(/.{1,2}/g)?.join(' ')}`)
 		?.join('\n'),
 )

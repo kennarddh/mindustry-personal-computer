@@ -1190,7 +1190,8 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 	],
 ])
 
-export const NumberCharacterSet = new Set(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'])
+export const IntegerCharacterSet = new Set(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'])
+export const FloatCharacterSet = new Set(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'])
 
 export const RegisterToIntMap = new Map([
 	['RAX', 0],
