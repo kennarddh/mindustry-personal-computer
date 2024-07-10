@@ -14,12 +14,14 @@
 -   Repetition of rule `A`: `{A}`.
 
 ```
-ImmediateValue = <Double>
+UnsignedShortImmediateValue = <UnsignedShort>
+DoubleImmediateValue = <Double>
 MemoryAddress = "[" <53BitsSignedInteger> "]"
 Register = RAX | RBX | RCX | RDX | RPX | RDX | RSI | RDI | RIP | IR | RSP | RBP | RFLAGS
-Value = ImmediateValue | MemoryAddress  | (CaseInsestive:Register)
+Value1 = UnsignedShortImmediateValue | MemoryAddress  | (CaseInsestive:Register)
+Value2 = ImmediateValue | MemoryAddress  | (CaseInsestive:Register)
 CaseInsensitiveOpcodeAbbreviation = <caseInsensitiveOpcodes>
 Comment = ";" <String>
-Line = (CaseInsensitiveOpcodeAbbreviation Value ", " Value [Comment]) | <LineFeed>
+Line = (CaseInsensitiveOpcodeAbbreviation Value1 ", " Value2 [Comment]) | <LineFeed>
 Program = {Line}
 ```
