@@ -65,6 +65,16 @@ class Compiler {
 				`Invalid value 2 "${value2}" at line ${line}. The opcode "${opcode}" does not allow ${ValueInKindToNameLookup[value2InKind]} as value in kind.`,
 			)
 
+		if (value2 < 0)
+			throw new Error(
+				`Invalid value 1 "${value1}" at line ${line}. Value 1 cannot be smaller than 0.`,
+			)
+
+		if (value2 > 65535)
+			throw new Error(
+				`Invalid value 1 "${value1}" at line ${line}. Value 1 cannot be bigger than 65535.`,
+			)
+
 		outputBuffer.writeUByte(opcodeValue.int)
 		outputBuffer.writeUByte(value1InKind)
 		outputBuffer.writeUShort(value1)
