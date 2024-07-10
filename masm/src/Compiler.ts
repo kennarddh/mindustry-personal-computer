@@ -173,7 +173,7 @@ class Compiler {
 						lineState = LineState.Done
 					}
 
-					// console.debug({ line, opcode, value1, value2 })
+					console.debug({ line, opcode, value1, value2 })
 
 					this.processLine(outputBuffer, line, opcode, value1, value2)
 
