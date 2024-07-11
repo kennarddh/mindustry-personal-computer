@@ -1,8 +1,8 @@
 export enum LineState {
-	Opcode = 'Opcode',
-	Value1 = 'Value1',
-	Value2 = 'Value2',
-	Done = 'Done',
+	Opcode,
+	Value1,
+	Value2,
+	Done,
 }
 
 export enum ValueInKind {
