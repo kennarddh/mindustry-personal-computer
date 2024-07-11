@@ -21,10 +21,10 @@ export interface OpcodeMapValue {
 	int: number
 	isValue1Required: boolean
 	writeToValue1: boolean
-	value1AllowedInKinds: ValueInKind[]
+	value1AllowedInKinds: Set<ValueInKind>
 	isValue2Required: boolean
 	writeToValue2: boolean
-	value2AllowedInKinds: ValueInKind[]
+	value2AllowedInKinds: Set<ValueInKind>
 }
 
 export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
@@ -36,12 +36,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -52,12 +52,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -68,12 +68,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -84,12 +84,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -100,12 +100,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -116,12 +116,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -132,12 +132,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -148,12 +148,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -164,12 +164,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -180,12 +180,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -196,12 +196,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -212,12 +212,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -228,12 +228,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -244,12 +244,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -260,12 +260,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -276,12 +276,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -292,12 +292,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -308,12 +308,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -324,12 +324,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -340,12 +340,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -356,12 +356,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -372,12 +372,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -388,12 +388,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -404,12 +404,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -420,12 +420,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -436,16 +436,16 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [
+			value1AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
-			value2AllowedInKinds: [
+			]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -456,12 +456,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -472,12 +472,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -488,12 +488,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -504,12 +504,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -520,12 +520,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -536,12 +536,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -552,16 +552,16 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [
+			value1AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
-			value2AllowedInKinds: [
+			]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -572,16 +572,16 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [
+			value1AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
-			value2AllowedInKinds: [
+			]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -592,12 +592,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: false,
 			isValue2Required: true,
-			value1AllowedInKinds: [
+			value1AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
-			value2AllowedInKinds: [],
+			]),
+			value2AllowedInKinds: new Set([]),
 		},
 	],
 	[
@@ -608,8 +608,8 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [],
-			value2AllowedInKinds: [],
+			value1AllowedInKinds: new Set([]),
+			value2AllowedInKinds: new Set([]),
 		},
 	],
 	[
@@ -620,8 +620,8 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [],
-			value2AllowedInKinds: [],
+			value1AllowedInKinds: new Set([]),
+			value2AllowedInKinds: new Set([]),
 		},
 	],
 	[
@@ -632,16 +632,16 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [
+			value1AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
-			value2AllowedInKinds: [
+			]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -652,16 +652,16 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [
+			value1AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
-			value2AllowedInKinds: [
+			]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -672,16 +672,16 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [
+			value1AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
-			value2AllowedInKinds: [
+			]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -692,16 +692,16 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [
+			value1AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
-			value2AllowedInKinds: [
+			]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -712,16 +712,16 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [
+			value1AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
-			value2AllowedInKinds: [
+			]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -732,16 +732,16 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [
+			value1AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
-			value2AllowedInKinds: [
+			]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -752,16 +752,16 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [
+			value1AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
-			value2AllowedInKinds: [
+			]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -772,16 +772,16 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [
+			value1AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
-			value2AllowedInKinds: [
+			]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -792,16 +792,16 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [
+			value1AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
-			value2AllowedInKinds: [
+			]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -812,16 +812,16 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [
+			value1AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
-			value2AllowedInKinds: [
+			]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -832,12 +832,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [
+			value1AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
-			value2AllowedInKinds: [],
+			]),
+			value2AllowedInKinds: new Set([]),
 		},
 	],
 	[
@@ -848,8 +848,8 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [],
-			value2AllowedInKinds: [],
+			value1AllowedInKinds: new Set([]),
+			value2AllowedInKinds: new Set([]),
 		},
 	],
 	[
@@ -860,8 +860,8 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [],
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([]),
 		},
 	],
 	[
@@ -872,8 +872,8 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [],
-			value2AllowedInKinds: [],
+			value1AllowedInKinds: new Set([]),
+			value2AllowedInKinds: new Set([]),
 		},
 	],
 	[
@@ -884,12 +884,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -900,12 +900,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -916,12 +916,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -932,12 +932,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -948,12 +948,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -964,12 +964,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -980,12 +980,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -996,12 +996,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -1012,12 +1012,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -1028,8 +1028,8 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: true,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
 		},
 	],
 	[
@@ -1040,16 +1040,16 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [
+			value1AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
-			value2AllowedInKinds: [
+			]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -1060,12 +1060,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [
+			value1AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
-			value2AllowedInKinds: [],
+			]),
+			value2AllowedInKinds: new Set([]),
 		},
 	],
 	[
@@ -1076,8 +1076,8 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [],
-			value2AllowedInKinds: [],
+			value1AllowedInKinds: new Set([]),
+			value2AllowedInKinds: new Set([]),
 		},
 	],
 	[
@@ -1088,12 +1088,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [
+			value1AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
-			value2AllowedInKinds: [],
+			]),
+			value2AllowedInKinds: new Set([]),
 		},
 	],
 	[
@@ -1104,12 +1104,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -1120,16 +1120,16 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [
+			value1AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
-			value2AllowedInKinds: [
+			]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -1140,12 +1140,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -1156,12 +1156,12 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [ValueInKind.Register, ValueInKind.Memory],
-			value2AllowedInKinds: [
+			value1AllowedInKinds: new Set([ValueInKind.Register, ValueInKind.Memory]),
+			value2AllowedInKinds: new Set([
 				ValueInKind.Register,
 				ValueInKind.Memory,
 				ValueInKind.ImmediateValue,
-			],
+			]),
 		},
 	],
 	[
@@ -1172,8 +1172,8 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [],
-			value2AllowedInKinds: [],
+			value1AllowedInKinds: new Set([]),
+			value2AllowedInKinds: new Set([]),
 		},
 	],
 	[
@@ -1184,8 +1184,8 @@ export const OpcodeToValueMap = new Map<string, OpcodeMapValue>([
 			writeToValue2: false,
 			isValue1Required: true,
 			isValue2Required: true,
-			value1AllowedInKinds: [],
-			value2AllowedInKinds: [],
+			value1AllowedInKinds: new Set([]),
+			value2AllowedInKinds: new Set([]),
 		},
 	],
 ])

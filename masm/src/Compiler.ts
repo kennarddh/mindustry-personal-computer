@@ -56,12 +56,12 @@ class Compiler {
 				`Invalid value 2 "${value2}" at line ${line}. The register "${value1String}" is read only.`,
 			)
 
-		if (!opcodeValue.value1AllowedInKinds.includes(value1InKind))
+		if (!opcodeValue.value1AllowedInKinds.has(value1InKind))
 			throw new Error(
 				`Invalid value 1 "${value1}" at line ${line}. The opcode "${opcode}" does not allow ${ValueInKindToNameLookup[value1InKind]} as value in kind.`,
 			)
 
-		if (!opcodeValue.value2AllowedInKinds.includes(value2InKind))
+		if (!opcodeValue.value2AllowedInKinds.has(value2InKind))
 			throw new Error(
 				`Invalid value 2 "${value2}" at line ${line}. The opcode "${opcode}" does not allow ${ValueInKindToNameLookup[value2InKind]} as value in kind.`,
 			)
