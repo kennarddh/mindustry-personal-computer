@@ -35,13 +35,13 @@ const end = process.hrtime.bigint()
 
 const duration = end - start
 
-const length = compileDurations.length
+// const length = compileDurations.length
 
-for (let i = 0; i < length; i++) {
-	const compileDuration = compileDurations[i]!
+// for (let i = 0; i < length; i++) {
+// 	const compileDuration = compileDurations[i]!
 
-	console.log(`Done compile ${i} in ${PrettyTime(compileDuration)}`)
-}
+// 	console.log(`Done compile ${i} in ${PrettyTime(compileDuration)}`)
+// }
 
 const sumNS = compileDurations.reduce((duration, acc) => acc + duration, 0n)
 
