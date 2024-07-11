@@ -15,7 +15,7 @@ const compiler = new Compiler()
 
 const compileDurations: bigint[] = []
 
-const total = 1000
+const total = 10000
 
 for (let i = 0; i < total; i++) {
 	if (i % 100 === 0) console.log(`Processing ${i}/${total}`)
